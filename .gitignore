@@ -1,0 +1,34 @@
+# Compilados
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Logs
+*.log
+
+# Maven target directory (caso use Maven)
+target/
+
+# OS / IDE system files
+.DS_Store
+Thumbs.db
+
+# === Frontend (HTML, CSS, JS puros) ===
+
+# Nenhum build automático, mas caso use alguma ferramenta de build futuramente:
+dist/
+node_modules/
+
+# === General ===
+
+# Backup files
+*~
+*.swp
+*.bak
+
+# Environment or config files (caso existam)
+.env
+

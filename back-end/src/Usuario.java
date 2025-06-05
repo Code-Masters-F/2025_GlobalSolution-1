@@ -42,16 +42,27 @@ public class Usuario {
         return telefone;
     }
 
-    public void cadastrarAbrigoImprovisado(int id, String cep, String endereco, String email,
+    public void cadastrarAbrigoImprovisado(int id, String cep, String endereco,
                                            String dataFuncionamento, int capacidadeMaxima) {
 
-        AbrigoImprovisado novoAbrigo = new AbrigoImprovisado(id, cep, endereco, email, dataFuncionamento,
+        AbrigoImprovisado novoAbrigo = new AbrigoImprovisado(id, cep, endereco, this.email, dataFuncionamento,
                 capacidadeMaxima, this);
 
         this.abrigosCriados.add(novoAbrigo);
     }
 
+    public List<AbrigoImprovisado> getAbrigosCriados() {
+        return abrigosCriados;
+    }
+
+    /**
+     * Exclui da lista do Usuario e da lista de AbrigosImprovisados,
+     * tudo com base no id
+     * @param id
+     */
     public void excluirAbrigoCriado(int id) {
+        AbrigoImprovisado.remover(id);
+
         for(AbrigoImprovisado abrigo : abrigosCriados) {
             if(abrigo.getId() == id) {
                 this.abrigosCriados.remove(abrigo);

@@ -1,1 +1,0 @@
-Apague esse arquivo quendo for inserir o conteúdo no diretório banco-de-dados

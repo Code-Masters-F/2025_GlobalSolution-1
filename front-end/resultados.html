@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrigo Já</title>
+    <title>Abrigo Já - Resultados da Busca</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/resultados.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -49,60 +50,28 @@
 
     <main class="conteudo-principal">
         <div class="container">
-            <section class="secao-busca">
-                <div class="campo-busca">
-                    <input type="text" id="localizacao" placeholder="Digite sua localização (cidade, bairro ou CEP)" class="input-busca">
-                    <button class="botao-principal" id="buscarAbrigos">
-                        <i class="fas fa-search"></i>
-                        Buscar Abrigos Próximos
-                    </button>
+            <section class="secao-filtros">
+                <a href="#" class="botao-voltar-topo-discreto" onclick="window.location.href = 'index.html'; return false;">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <div class="filtros">
+                    <select id="filtroTipo" class="filtro">
+                        <option value="">Tipo de Abrigo</option>
+                        <option value="Oficial">Oficial</option>
+                        <option value="Improvisado">Improvisado</option>
+                    </select>
+                    <select id="filtroVagas" class="filtro">
+                        <option value="">Vagas Disponíveis</option>
+                        <option value="5">5+ vagas</option>
+                        <option value="10">10+ vagas</option>
+                        <option value="15">15+ vagas</option>
+                    </select>
                 </div>
             </section>
 
-            <hr class="divider">
-
-            <!-- Mapa Interativo dos Abrigos -->
-            <section class="secao-destacada-mapa-contato">
-                <div class="container-mapa-contato">
-                    <h2 class="titulo-abrigo-proximo">
-                        Veja o abrigo mais próximo:
-                    </h2>
-                    <div class="mapa-container-estilizado">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.456789012!2d-46.6023456!3d-23.5645678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59f123456789%3A0xabcdefabcdef5678!2sRua%20das%20Flores%2C%20567%20-%20Vila%20Mariana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <p class="frase-destaque-mapa"><i class="fas fa-map-marker-alt"></i> “Ajuda perto de você, a qualquer hora.”</p>
-                    <div class="bloco-contato-titulo">Contato</div>
-                    <div class="cards-contato-estilizados">
-                        <div class="card-contato-item-estilizado">
-                            <i class="fas fa-envelope"></i>
-                            <span>vilamariana@abrigoja.org</span>
-                        </div>
-                        <div class="card-contato-item-estilizado">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>(11) 91234-5678</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="secao-info">
-                <h2>Como Funciona</h2>
-                <div class="cards-info">
-                    <div class="card-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Localize</h3>
-                        <p>Encontre abrigos próximos à sua localização</p>
-                    </div>
-                    <div class="card-info">
-                        <i class="fas fa-bed"></i>
-                        <h3>Vagas</h3>
-                        <p>Verifique a disponibilidade de vagas</p>
-                    </div>
-                    <div class="card-info">
-                        <i class="fas fa-phone"></i>
-                        <h3>Contato</h3>
-                        <p>Entre em contato com o abrigo</p>
-                    </div>
+            <section class="secao-resultados">
+                <div id="listaAbrigos" class="lista-abrigos">
+                    <!-- Os cards de abrigos serão inseridos aqui via JavaScript -->
                 </div>
             </section>
         </div>
@@ -162,8 +131,7 @@
 
     <script src="js/dados.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/resultados.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/mapa.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_AQUI&callback=inicializarMapa"></script>
 </body>
-</html>
+</html> 

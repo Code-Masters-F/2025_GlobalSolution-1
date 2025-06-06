@@ -1,0 +1,159 @@
+/* Seção de Filtros */
+.secao-filtros {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.filtros {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.filtro {
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    min-width: 250px;
+    background-color: var(--cor-branca);
+    flex: 0 0 auto;
+}
+
+/* Estilo específico para o botão voltar dentro da seção de filtros */
+.secao-filtros .botao-voltar-topo-discreto {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Lista de Abrigos */
+.lista-abrigos {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+.card-abrigo {
+    background-color: var(--cor-branca);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease;
+}
+
+.card-abrigo:hover {
+    transform: translateY(-5px);
+}
+
+.card-abrigo h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.info-abrigo {
+    margin: 1.5rem 0;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+}
+
+.info-item i {
+    color: var(--cor-secundaria);
+    width: 24px;
+    font-size: 1.2rem;
+}
+
+.botao-detalhes {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.botao-detalhes:hover {
+    background-color: #2b6cb0;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .lista-abrigos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .lista-abrigos {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .card-abrigo {
+        padding: 2.5rem;
+    }
+    
+    .card-abrigo h3 {
+        font-size: 1.75rem;
+    }
+    
+    .info-item {
+        font-size: 1.2rem;
+    }
+    
+    .botao-detalhes {
+        padding: 1.25rem 2.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile - Ajustes para garantir que botão e filtros fiquem lado a lado */
+    .secao-filtros {
+        gap: 0.8rem; /* Espaçamento entre o botão e o bloco de filtros */
+        justify-content: flex-start; /* Alinhar ao início */
+        flex-wrap: wrap; /* Permitir quebra (se necessário, mas menos provável com os ajustes abaixo) */
+    }
+    .filtros {
+        flex-direction: row;
+        gap: 0.8rem; /* Espaçamento entre os filtros */
+        justify-content: space-between; /* Distribuir espaço entre os filtros */
+        flex-grow: 1; /* Permite que o bloco de filtros cresça */
+        flex-shrink: 1; /* Permite que o bloco de filtros encolha */
+        flex-basis: 0; /* Permite que o bloco de filtros encolha abaixo do seu tamanho de conteúdo */
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+    }
+
+    .filtro {
+        min-width: unset; /* Remover min-width */
+        flex: 1 1 auto; /* Permite que os filtros compartilhem o espaço e encolham */
+        padding: 0.6rem; /* Reduzir um pouco o padding no mobile */
+        font-size: 0.9rem; /* Reduzir um pouco o tamanho da fonte no mobile */
+    }
+
+    .secao-filtros .botao-voltar-topo-discreto {
+        margin-top: 0;
+        margin-bottom: 0;
+        flex-shrink: 0; /* Impedir que o botão encolha */
+    }
+} 

@@ -1,0 +1,286 @@
+/* Conteúdo do Abrigo */
+.conteudo-abrigo {
+    padding: 2rem;
+    background-color: var(--cor-branca);
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    margin-bottom: 3rem;
+}
+
+.titulo-abrigo {
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.secao-info {
+    margin-bottom: 2.5rem;
+}
+
+.secao-info h3 {
+    color: var(--cor-primaria);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.secao-info h3 i {
+    color: var(--cor-secundaria);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--cor-fundo);
+    border-radius: 12px;
+    font-size: 1.1rem;
+}
+
+.info-item i {
+    color: var(--cor-secundaria);
+    font-size: 1.5rem;
+    width: 28px;
+    text-align: center;
+}
+
+.info-item .conteudo {
+    flex: 1;
+}
+
+.info-item .label {
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.info-item .valor {
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Mapa */
+.mapa-container {
+    margin: 2.5rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px;
+    background-color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapa-placeholder {
+    text-align: center;
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+}
+
+/* Serviços */
+.lista-servicos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.servico-item {
+    background-color: var(--cor-fundo);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.servico-item i {
+    color: var(--cor-secundaria);
+    font-size: 1.2rem;
+}
+
+/* Botões de Navegação */
+.botoes-navegacao {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.botao-voltar {
+    background-color: var(--cor-texto);
+    color: var(--cor-branca);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botao-voltar:hover {
+    background-color: #4a5568;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .info-item {
+        padding: 1.5rem;
+    }
+
+    .mapa-container {
+        height: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .conteudo-abrigo {
+        padding: 3rem;
+    }
+    
+    .titulo-abrigo {
+        font-size: 2rem;
+    }
+    
+    .secao-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .info-item {
+        padding: 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .info-item i {
+        font-size: 1.75rem;
+    }
+    
+    .info-item .label {
+        font-size: 1.2rem;
+    }
+    
+    .info-item .valor {
+        font-size: 1.2rem;
+    }
+    
+    .mapa-container {
+        height: 600px;
+    }
+    
+    .servico-item {
+        padding: 1rem 1.25rem;
+        font-size: 1.2rem;
+    }
+    
+    .botao-voltar {
+        padding: 1.25rem 2.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Ajustes para botões de navegação no mobile */
+    .botoes-navegacao {
+        flex-direction: row;
+        justify-content: space-around; /* Distribui o espaço entre os botões */
+        gap: 1rem; /* Espaçamento menor entre botões no mobile */
+        flex-wrap: wrap; /* Permite quebra de linha se não houver espaço */
+    }
+
+    .botoes-navegacao .botao-voltar,
+    .botoes-navegacao .botao-principal {
+        flex: 1 1 auto; /* Permite que os botões cresçam e encolham, compartilhando o espaço */
+        padding: 0.8rem 1.2rem; /* Diminuir padding */
+        font-size: 1rem; /* Diminuir tamanho da fonte */
+        text-align: center; /* Centralizar texto */
+        justify-content: center; /* Centralizar conteúdo flex (ícone e texto) */
+    }
+
+    .info-item {
+        padding: 1rem;
+    }
+}
+
+.grid-detalhes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.bloco-info {
+    background: var(--cor-fundo);
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    padding: 1.5rem;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 120px;
+    font-size: 1.1rem;
+}
+
+.bloco-info h4 {
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 900px) {
+    .grid-detalhes {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bloco-localizacao .localizacao-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.localizacao-endereco {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.localizacao-mapa .mapa-container {
+    margin: 0;
+    height: 200px;
+    min-width: 200px;
+}
+
+.bloco-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.bloco-pequeno {
+    padding: 1.25rem;
+    min-height: 80px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+    .grid-detalhes {
+        grid-template-columns: 1fr;
+    }
+    .bloco-localizacao .localizacao-grid {
+        grid-template-columns: 1fr;
+    }
+    .localizacao-mapa .mapa-container {
+        height: 300px;
+    }
+    .bloco-duplo {
+        grid-template-columns: 1fr;
+    }
+} 

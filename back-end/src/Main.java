@@ -17,9 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // OBS: não foi implementado uma entrada de dados do usuário diretamente pelo
-        // código Java, pois os dados serão colhidos por uma interface front-end
-
+        // OBS: Hipoteticamente os dados estão sendo colhidos do front-end:
 
         // Sugestão de teste
 

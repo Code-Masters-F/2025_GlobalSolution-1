@@ -1,4 +1,6 @@
-
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
 
@@ -14,12 +16,166 @@ public class Main {
         gestor.cadastrarAbrigoImprovisado(id, cep, endereco, dataFuncionamento, capacidadeMaxima);
     }
 
+    // Usuarios cadastrados
+    public static Set<Usuario> todosUsuarios = new HashSet<>();
+
+    public static void criarUsuario(int id, String nome, String email, String senha, String cpf, String telefone) {
+        todosUsuarios.add(new Usuario(id, nome, email, senha, cpf, telefone));
+    }
+
+    public static void exibirUsuarios() {
+        System.out.println("\nUsuarios:");
+        for(Usuario usuario : todosUsuarios) {
+            System.out.println(usuario.toString());
+        }
+    }
+
 
     public static void main(String[] args) {
 
-        // OBS: Hipoteticamente os dados estão sendo colhidos do front-end:
+        Scanner scanner = new Scanner(System.in);
+        String opcao;
 
-        // Sugestão de teste
+        do {
+            System.out.println("\n===== MENU =====");
+            System.out.println("1 - criar usuario");
+            System.out.println("2 - exibir usuarios");
+            System.out.println("3 - criar abrigo improvisado");
+            System.out.println("4 - excluir abrigo improvisado");
+            System.out.println("5 - exibir abrigos improvisados");
+            System.out.println("6 - criar abrigo oficial");
+            System.out.println("7 - excluir abrigo oficial");
+            System.out.println("8 - exibir abrigo oficial");
+            System.out.println("0 - sair");
+            System.out.print("Digite uma opção: ");
+            opcao = scanner.nextLine();
+
+            try {
+                switch (opcao) {
+                    case "1":
+                        System.out.print("Digite o ID deste novo usuario: ");
+                        int id = scanner.nextInt();
+                        scanner.nextLine(); // Limpar o buffer
+
+                        System.out.print("Digite o nome: ");
+                        String nome = scanner.nextLine();
+
+                        System.out.print("Digite o email: ");
+                        String email = scanner.nextLine();
+
+                        System.out.print("Digite a senha: ");
+                        String senha = scanner.nextLine();
+
+                        System.out.print("Digite o CPF: ");
+                        String cpf = scanner.nextLine();
+
+                        System.out.print("Digite o telefone: ");
+                        String telefone = scanner.nextLine();
+
+                        criarUsuario(id, nome, email, senha, cpf, telefone);
+                        break;
+                    case "2":
+                        System.out.println("Exibindo usuários...");
+                        exibirUsuarios();
+                        break;
+                    case "3":
+                        System.out.print("Digite o ID deste novo abrigo: ");
+                        id = scanner.nextInt();
+                        scanner.nextLine(); // Limpa o buffer
+
+                        System.out.print("Digite o CEP: ");
+                        String cep = scanner.nextLine();
+
+                        System.out.print("Digite o endereço: ");
+                        String endereco = scanner.nextLine();
+
+                        System.out.print("Digite a data de termino de funcionamento (dd/MM/yyyy HH:mm): ");
+                        String dataFuncionamento = scanner.nextLine();
+
+                        System.out.print("Digite a capacidade máxima: ");
+                        int capacidadeMaxima = scanner.nextInt();
+                        scanner.nextLine(); // Limpa o buffer
+
+                        System.out.print("Digite o id do usuario que esta criando este abrigo: ");
+                        int idUsuario = scanner.nextInt();
+                        scanner.nextLine(); // Limpa o buffer
+                        for (Usuario usuario : todosUsuarios) {
+                            if(usuario.getId() == idUsuario){
+                                usuario.cadastrarAbrigoImprovisado(id, cep, endereco, dataFuncionamento, capacidadeMaxima);
+                                System.out.println("Estabelecimento criado com sucesso!");
+                            }
+                        }
+                        break;
+                    case "4":
+                        System.out.println("Digite o id do usuario que criou este abrigo: ");
+                        idUsuario = scanner.nextInt();
+                        System.out.println("Digite o id do abrigo que deseja excluir: ");
+                        id = scanner.nextInt();
+                        for (Usuario usuario : todosUsuarios) {
+                            if(usuario.getId() == idUsuario){
+                                usuario.excluirAbrigoCriado(id);
+                            }
+                        }
+                        break;
+                    case "5":
+                        System.out.println("Exibindo abrigos improvisados...");
+                        AbrigoImprovisado.exibir();
+                        break;
+                    case "6":
+                        System.out.print("Digite o ID no novo abrigo Oficial: ");
+                        id = scanner.nextInt();
+                        scanner.nextLine(); // Limpa o buffer
+
+                        System.out.print("Digite o CEP: ");
+                        cep = scanner.nextLine();
+
+                        System.out.print("Digite o endereço: ");
+                        endereco = scanner.nextLine();
+
+                        System.out.print("Digite o email: ");
+                        email = scanner.nextLine();
+
+                        System.out.print("Digite a data de termino de funcionamento (dd/MM/yyyy HH:mm): ");
+                        dataFuncionamento = scanner.nextLine();
+
+                        System.out.print("Digite a capacidade máxima: ");
+                        capacidadeMaxima = scanner.nextInt();
+                        scanner.nextLine(); // Limpa o buffer
+
+                        System.out.print("Digite o nome: ");
+                        nome = scanner.nextLine();
+
+                        System.out.print("Digite o CNPJ: ");
+                        String cnpj = scanner.nextLine();
+
+                        criarAbrigoOficial(id, cep, endereco, email, dataFuncionamento, capacidadeMaxima, nome, cnpj);
+                        break;
+                    case "7":
+                        System.out.println("Digite o id do abrigo Oficial que deseja excluir:");
+                        id = scanner.nextInt();
+                        scanner.nextLine(); // Limpar o buffer
+                        AbrigoOficial.remover(id);
+                        break;
+                    case "8":
+                        System.out.println("Exibindo abrigos oficial...");
+                        AbrigoOficial.exibir();
+                        break;
+                    case "0":
+                        System.out.println("Saindo do sistema...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+            }catch(Exception e) {
+                System.out.println("Erro ao processar a opção. Tente novamente.");
+            }finally {
+                scanner.nextLine(); // a ultima opção pode ser um int
+            }
+        } while (!opcao.equals("0"));
+
+        scanner.close();
+
+        // Caso não queira digitar:
 
         /*
         Usuario pedro1234 = new Usuario(1, "Pedro", "pedro@email.com", "1234",
@@ -64,6 +220,5 @@ public class Main {
         System.out.println("\nRemovendo---------------------------");
         AbrigoOficial.exibir();
         */
-
     }
 }

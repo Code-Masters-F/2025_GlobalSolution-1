@@ -42,6 +42,22 @@ public class Usuario {
         return telefone;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public void cadastrarAbrigoImprovisado(int id, String cep, String endereco,
                                            String dataFuncionamento, int capacidadeMaxima) {
 

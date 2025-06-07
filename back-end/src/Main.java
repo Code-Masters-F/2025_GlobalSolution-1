@@ -45,7 +45,10 @@ public class Main {
             System.out.println("5 - exibir abrigos improvisados");
             System.out.println("6 - criar abrigo oficial");
             System.out.println("7 - excluir abrigo oficial");
-            System.out.println("8 - exibir abrigo oficial");
+            System.out.println("8 - exibir abrigos oficiais");
+            System.out.println("9 - atualizar abrigo oficial");
+            System.out.println("10 - atualizar abrigo improvisado");
+            System.out.println("11 - atualizar usuario");
             System.out.println("0 - sair");
             System.out.print("Digite uma opção: ");
             opcao = scanner.nextLine();
@@ -102,15 +105,17 @@ public class Main {
                         for (Usuario usuario : todosUsuarios) {
                             if(usuario.getId() == idUsuario){
                                 usuario.cadastrarAbrigoImprovisado(id, cep, endereco, dataFuncionamento, capacidadeMaxima);
-                                System.out.println("Estabelecimento criado com sucesso!");
+                                System.out.println("Abrigo criado com sucesso!");
                             }
                         }
                         break;
                     case "4":
-                        System.out.println("Digite o id do usuario que criou este abrigo: ");
+                        System.out.print("Digite o id do usuario que criou este abrigo: ");
                         idUsuario = scanner.nextInt();
-                        System.out.println("Digite o id do abrigo que deseja excluir: ");
+                        scanner.nextLine();
+                        System.out.print("Digite o id do abrigo que deseja excluir: ");
                         id = scanner.nextInt();
+                        scanner.nextLine();
                         for (Usuario usuario : todosUsuarios) {
                             if(usuario.getId() == idUsuario){
                                 usuario.excluirAbrigoCriado(id);
@@ -151,7 +156,7 @@ public class Main {
                         criarAbrigoOficial(id, cep, endereco, email, dataFuncionamento, capacidadeMaxima, nome, cnpj);
                         break;
                     case "7":
-                        System.out.println("Digite o id do abrigo Oficial que deseja excluir:");
+                        System.out.print("Digite o id do abrigo Oficial que deseja excluir: ");
                         id = scanner.nextInt();
                         scanner.nextLine(); // Limpar o buffer
                         AbrigoOficial.remover(id);
@@ -159,6 +164,60 @@ public class Main {
                     case "8":
                         System.out.println("Exibindo abrigos oficial...");
                         AbrigoOficial.exibir();
+                        break;
+                    case "9":
+                        System.out.print("Digite o id do abrigo Oficial que deseja atualizar:");
+                        id = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Digite o novo email: ");
+                        email = scanner.nextLine();
+                        System.out.print("Digite a nova data de termino de funcionamento (dd/MM/yyyy HH:mm): ");
+                        dataFuncionamento = scanner.nextLine();
+                        for (AbrigoOficial abrigoOficial : AbrigoOficial.todosAbrigosOficiais) {
+                            if(abrigoOficial.getId() == id){
+                                abrigoOficial.setEmail(email);
+                                abrigoOficial.setDataFuncionamento(dataFuncionamento);
+                                System.out.println("Atualizado com sucesso!");
+                            }
+                        }
+                        break;
+                    case "10":
+                        System.out.print("Digite o id do abrigo Improvisado que deseja atualizar:");
+                        id = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Digite o novo email: ");
+                        email = scanner.nextLine();
+                        System.out.print("Digite a nova data de termino de funcionamento (dd/MM/yyyy HH:mm): ");
+                        dataFuncionamento = scanner.nextLine();
+                        for (AbrigoImprovisado abrigoImprovisado : AbrigoImprovisado.todosAbrigosImprovisados) {
+                            if(abrigoImprovisado.getId() == id){
+                                abrigoImprovisado.setEmail(email);
+                                abrigoImprovisado.setDataFuncionamento(dataFuncionamento);
+                                System.out.println("Atualizado com sucesso!");
+                            }
+                        }
+                        break;
+                    case "11":
+                        System.out.print("Digite o id do Usuario que deseja atualizar:");
+                        id = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Digite o novo nome: ");
+                        nome = scanner.nextLine();
+                        System.out.print("Digite o novo email: ");
+                        email = scanner.nextLine();
+                        System.out.print("Digite a nova senha: ");
+                        senha = scanner.nextLine();
+                        System.out.print("Digite o novo telefone: ");
+                        telefone = scanner.nextLine();
+                        for (Usuario usuario : todosUsuarios) {
+                            if(usuario.getId() == id){
+                                usuario.setNome(nome);
+                                usuario.setEmail(email);
+                                usuario.setSenha(senha);
+                                usuario.setTelefone(telefone);
+                                System.out.println("Atualizado com sucesso!");
+                            }
+                        }
                         break;
                     case "0":
                         System.out.println("Saindo do sistema...");
@@ -168,8 +227,7 @@ public class Main {
                 }
             }catch(Exception e) {
                 System.out.println("Erro ao processar a opção. Tente novamente.");
-            }finally {
-                scanner.nextLine(); // a ultima opção pode ser um int
+                scanner.nextLine();
             }
         } while (!opcao.equals("0"));
 

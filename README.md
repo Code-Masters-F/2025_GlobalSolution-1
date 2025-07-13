@@ -56,6 +56,7 @@ Shows how the data is structured and related in the relational database:
 - **Java** (Object-Oriented Programming)
 - **MySQL** (Database modeling and storage)
 - **UML / Visual Paradigm** (Software modeling)
+- **HTML, CSS, JS** (Front-End)
 
 ---
 
